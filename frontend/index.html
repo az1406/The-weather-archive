@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Weather Archive</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-section">
+            <h1 class="logo">The Weather Archive</h1>
+            <p class="tagline">Historical Weather Data from Major European Cities</p>
+        </div>
+
+        <div class="search-section">
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="search-input"
+                    placeholder="Search for a city..."
+                    autocomplete="off"
+                >
+                <button id="searchButton" class="search-button">Search</button>
+            </div>
+
+            <!-- Autocomplete dropdown -->
+            <div id="autocompleteList" class="autocomplete-list hidden"></div>
+
+            <!-- Error message -->
+            <div id="errorMessage" class="error-message hidden">
+                Please select a valid city from the suggestions
+            </div>
+        </div>
+
+        <div class="info-section">
+            <p class="info-text">Available cities: Vienna, Berlin, Paris, London</p>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">City - The Weather Archive</title>
+    <link rel="stylesheet" href="css/city-styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="back-link">← Back to Home</a>
+            <h1 class="site-title">The Weather Archive</h1>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- City heading -->
+            <h2 id="cityHeading" class="city-heading">Vienna</h2>
+
+            <!-- Date and time controls -->
+            <div class="controls-section">
+                <div class="date-picker-container">
+                    <label for="datePicker" class="control-label">Select Date:</label>
+                    <input type="date" id="datePicker" class="date-picker">
+                </div>
+
+                <div class="time-slider-container">
+                    <label for="timeSlider" class="control-label">Select Hour:</label>
+                    <div class="slider-wrapper">
+                        <input type="range" id="timeSlider" class="time-slider" min="0" max="23" value="12">
+                        <div class="slider-value" id="sliderValue">12:00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/city-script.js"></script>
+</body>
+</html>
+
