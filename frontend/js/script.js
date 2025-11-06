@@ -7,14 +7,11 @@ let currentFocusIndex = -1;
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 const autocompleteList = document.getElementById('autocompleteList');
-const errorMessage = document.getElementById('errorMessage');
 
 // Input event listener for autocomplete
 searchInput.addEventListener('input', function() {
     const inputValue = this.value.trim();
 
-    // Hide error message when typing
-    errorMessage.classList.add('hidden');
 
     // Clear autocomplete if input is empty
     if (!inputValue) {
@@ -127,8 +124,6 @@ function handleSearch() {
     );
 
     if (!isValidCity || !selectedCity) {
-        // Show error message
-        errorMessage.classList.remove('hidden');
         return;
     }
 

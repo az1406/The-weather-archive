@@ -125,15 +125,6 @@ body {
     display: none;
 }
 
-.error-message {
-    margin-top: 15px;
-    color: #d32f2f;
-    background-color: #ffebee;
-    padding: 12px 24px;
-    border-radius: 4px;
-    display: inline-block;
-    border: 1px solid #ef5350;
-}
 
 .info-section {
     animation: fadeIn 1s ease-out 0.3s both;
