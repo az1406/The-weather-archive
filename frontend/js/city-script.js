@@ -1,42 +1,37 @@
-// Get city from URL parameter
-const urlParams = new URLSearchParams(window.location.search);
-const cityName = urlParams.get('city') || 'Vienna';
 
-// Set city heading and page title
-document.getElementById('cityHeading').textContent = cityName;
-document.getElementById('pageTitle').textContent = `${cityName} - The Weather Archive`;
+const params = new URLSearchParams(window.location.search);
+const cityName = params.get('city') || 'Vienna';
 
-// Date picker configuration
+
+const cityHeading = document.getElementById('cityHeading');
+const pageTitle = document.getElementById('pageTitle');
 const datePicker = document.getElementById('datePicker');
-const today = new Date();
-const thirtyDaysAgo = new Date(today);
-thirtyDaysAgo.setDate(today.getDate() - 30);
-
-// Set available date range (last 30 days)
-datePicker.min = thirtyDaysAgo.toISOString().split('T')[0];
-datePicker.max = today.toISOString().split('T')[0];
-datePicker.value = today.toISOString().split('T')[0];
-
-// Time slider configuration
 const timeSlider = document.getElementById('timeSlider');
 const sliderValue = document.getElementById('sliderValue');
 
-// Update slider value display
-timeSlider.addEventListener('input', function() {
-    const hour = parseInt(this.value);
-    sliderValue.textContent = `${hour.toString().padStart(2, '0')}:00`;
-});
 
-// Date picker change event
+cityHeading.textContent = cityName;
+pageTitle.textContent = `${cityName} - The Weather Archive`;
+
+
+function setSlider(hour) {
+  const h = Number.isFinite(hour) ? hour : 12;
+  timeSlider.value = h;
+  sliderValue.textContent = `${String(h).padStart(2, '0')}:00`;
+}
+
+
 datePicker.addEventListener('change', function() {
-    console.log(`Date changed to: ${this.value}`);
+
 });
 
-// Initialize slider value
-sliderValue.textContent = '12:00';
+timeSlider.addEventListener('input', function() {
+  setSlider(parseInt(this.value, 10));
+});
 
-console.log(`Loaded ${cityName}`);
-console.log(`Date range: ${datePicker.min} to ${datePicker.max}`);
-
-
-
+// Init
+(function init() {
+  // Default date to today
+  datePicker.value = new Date().toISOString().split('T')[0];
+  setSlider(12);
+})();

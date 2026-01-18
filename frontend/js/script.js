@@ -1,12 +1,34 @@
-// Static list of cities (simulating autocomplete data)
-const cities = ['Vienna', 'Berlin', 'Paris', 'London'];
 
+
+let cities = ['Vienna', 'Berlin', 'Paris', 'London']; // Default cities
 let selectedCity = null;
 let currentFocusIndex = -1;
 
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 const autocompleteList = document.getElementById('autocompleteList');
+
+// Fetch available cities from Lambda (User Story 2)
+async function fetchCities() {
+    try {
+        if (!window.API_CONFIG || !API_CONFIG.cities) {
+            console.warn('API_CONFIG.cities not set');
+            return;
+        }
+        const response = await fetch(API_CONFIG.cities);
+        if (!response.ok) throw new Error(`Failed to load cities: ${response.status}`);
+        const data = await response.json();
+        if (Array.isArray(data.cities)) {
+            cities.splice(0, cities.length, ...data.cities); // replace contents
+        }
+    } catch (error) {
+        console.error('Error fetching cities:', error);
+        showError('Could not load cities from the server. Using local defaults.');
+    }
+}
+
+// Kick off city fetch on load
+fetchCities();
 
 // Input event listener for autocomplete
 searchInput.addEventListener('input', function() {
@@ -124,10 +146,16 @@ function handleSearch() {
     );
 
     if (!isValidCity || !selectedCity) {
+        showError('Please select a valid city from the autocomplete list.');
         return;
     }
 
-    // Navigate to city page
+    // Navigate to city page (User Story 5)
     window.location.href = `city.html?city=${encodeURIComponent(selectedCity)}`;
 }
 
+// Show error message
+function showError(message) {
+    // Implement your error display logic here
+    console.error(message);
+}

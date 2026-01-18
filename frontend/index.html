@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Weather Archive</title>
     <link rel="stylesheet" href="css/styles.css">
+    <!-- removed js/config.js -->
 </head>
 <body>
     <div class="container">
@@ -14,12 +15,14 @@
 
         <div class="search-section">
             <div class="search-container">
+                <label for="searchInput" class="visually-hidden">Search for a city</label>
                 <input
                     type="text"
                     id="searchInput"
                     class="search-input"
                     placeholder="Search for a city..."
                     autocomplete="off"
+                    aria-label="Search for a city"
                 >
                 <button id="searchButton" class="search-button">Search</button>
             </div>
@@ -36,4 +39,3 @@
     <script src="js/script.js"></script>
 </body>
 </html>
-
