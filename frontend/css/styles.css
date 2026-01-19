@@ -90,13 +90,13 @@ body {
 .autocomplete-list {
     position: absolute;
     background: white;
+    width: 100%;
     max-width: 600px;
-    width: calc(100% - 150px);
-    margin: 10px auto 0;
-    left: 0;
-    right: 150px;
+    margin-top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
     border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     z-index: 1000;
 }
@@ -140,6 +140,7 @@ body {
         opacity: 0;
         transform: translateY(-30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -151,6 +152,7 @@ body {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -161,6 +163,7 @@ body {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -181,4 +184,3 @@ body {
         right: 0;
     }
 }
-

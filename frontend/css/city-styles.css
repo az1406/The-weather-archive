@@ -249,8 +249,13 @@ body {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .error-message {
@@ -270,6 +275,7 @@ body {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -280,6 +286,7 @@ body {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -303,4 +310,28 @@ body {
     .controls-section {
         grid-template-columns: 1fr;
     }
+}
+
+.update-pulse {
+    animation: pulse-blue 1s ease-out;
+}
+
+@keyframes pulse-blue {
+    0% {
+        color: #333;
+    }
+
+    50% {
+        color: #007bff;
+        font-weight: bold;
+    }
+
+    100% {
+        color: #333;
+    }
+}
+
+.autocomplete-item.selected {
+    background-color: #333 !important;
+    color: white !important;
 }

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">City - The Weather Archive</title>
     <link rel="stylesheet" href="css/city-styles.css">
-    <!-- removed js/config.js -->
 </head>
 <body>
     <header class="header">
@@ -17,10 +16,20 @@
 
     <main class="main-content">
         <div class="container">
-            <!-- City heading -->
-            <h2 id="cityHeading" class="city-heading">Vienna</h2>
+            <h2 id="cityHeading" class="city-heading">Loading...</h2>
 
-            <!-- Date and time controls -->
+            <div class="weather-card">
+                <div class="weather-stat">
+                    <span class="stat-label">Average Temperature</span>
+                    <span id="avg-temp" class="stat-value">--</span>
+                </div>
+                <div class="weather-stat">
+                    <span class="stat-label">Average Humidity</span>
+                    <span id="avg-humidity" class="stat-value">--</span>
+                </div>
+                <p id="last-update" class="update-text"></p>
+            </div>
+
             <div class="controls-section">
                 <div class="date-picker-container">
                     <label for="datePicker" class="control-label">Select Date:</label>
