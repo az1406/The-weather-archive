@@ -1,3 +1,4 @@
+/* --- Global Reset & Base Styles --- */
 * {
     margin: 0;
     padding: 0;
@@ -9,8 +10,10 @@ body {
     background-color: #f5f5f5;
     min-height: 100vh;
     padding-bottom: 40px;
+    color: #333;
 }
 
+/* --- Header Section --- */
 .header {
     background: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -44,10 +47,7 @@ body {
     color: #333;
 }
 
-.main-content {
-    animation: fadeIn 0.6s ease-out;
-}
-
+/* --- Main Layout --- */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -59,8 +59,121 @@ body {
     font-size: 3rem;
     text-align: center;
     margin-bottom: 40px;
+    animation: fadeIn 0.8s ease-out;
 }
 
+/* --- Weather Stats Card --- */
+.weather-card {
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 40px;
+    animation: slideDown 0.5s ease-out;
+}
+
+.weather-stat {
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    font-size: 2.2rem;
+    color: #333;
+    font-weight: 700;
+}
+
+/* --- Live Sync Indicator --- */
+.update-text {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.update-text::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #2ecc71;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+/* --- Visuals Section (Photo & Video) --- */
+.visuals-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.photo-section,
+.video-section {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.photo-section h3,
+.video-section h3 {
+    color: #444;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.weather-photo,
+#weather-video {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 6px;
+    margin: 0 auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Empty State Messages --- */
+#no-photo-msg,
+#no-video-msg {
+    padding: 50px;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    color: #888;
+    background: #fafafa;
+    font-style: italic;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+/* --- Controls Section --- */
 .controls-section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -72,8 +185,8 @@ body {
 .time-slider-container {
     background: white;
     padding: 25px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .control-label {
@@ -98,10 +211,7 @@ body {
     border-color: #333;
 }
 
-.slider-wrapper {
-    position: relative;
-}
-
+/* --- Range Slider Styling --- */
 .time-slider {
     width: 100%;
     height: 8px;
@@ -113,175 +223,23 @@ body {
 
 .time-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     background: #333;
     cursor: pointer;
     transition: background 0.3s ease;
-}
-
-.time-slider::-webkit-slider-thumb:hover {
-    background: #555;
-}
-
-.time-slider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #333;
-    cursor: pointer;
-    border: none;
-    transition: background 0.3s ease;
-}
-
-.time-slider::-moz-range-thumb:hover {
-    background: #555;
 }
 
 .slider-value {
     text-align: center;
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.8rem;
+    font-weight: 700;
     color: #333;
     margin-top: 15px;
 }
 
-.video-section {
-    background: white;
-    padding: 30px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px;
-}
-
-.video-section h3 {
-    color: #333;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-}
-
-.weather-video {
-    width: 100%;
-    max-width: 100%;
-    border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.video-placeholder {
-    background: #f5f5f5;
-    padding: 60px;
-    text-align: center;
-    border-radius: 4px;
-    color: #666;
-}
-
-.plot-section {
-    background: white;
-    padding: 30px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px;
-}
-
-.plot-section h3 {
-    color: #333;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-}
-
-.weather-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-}
-
-.stat-card {
-    background: #f5f5f5;
-    padding: 25px;
-    border-radius: 4px;
-    text-align: center;
-}
-
-.stat-label {
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.stat-value {
-    color: #333;
-    font-size: 2rem;
-    font-weight: 700;
-}
-
-.no-data {
-    text-align: center;
-    color: #666;
-    padding: 40px;
-}
-
-.loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.9);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    z-index: 9999;
-}
-
-.spinner {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #333;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-    margin-bottom: 20px;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.error-message {
-    background-color: #f44336;
-    color: white;
-    padding: 15px 24px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: 1rem;
-    box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
-    animation: slideDown 0.3s ease-out;
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
+/* --- Animations --- */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -292,9 +250,45 @@ body {
     }
 }
 
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(46, 204, 113, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+    }
+}
+
+/* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
     .city-heading {
-        font-size: 2rem;
+        font-size: 2.2rem;
+    }
+
+    .weather-stat {
+        flex: 1 1 100%;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
     }
 
     .header-content {
@@ -302,36 +296,4 @@ body {
         gap: 15px;
         text-align: center;
     }
-
-    .site-title {
-        font-size: 1.5rem;
-    }
-
-    .controls-section {
-        grid-template-columns: 1fr;
-    }
-}
-
-.update-pulse {
-    animation: pulse-blue 1s ease-out;
-}
-
-@keyframes pulse-blue {
-    0% {
-        color: #333;
-    }
-
-    50% {
-        color: #007bff;
-        font-weight: bold;
-    }
-
-    100% {
-        color: #333;
-    }
-}
-
-.autocomplete-item.selected {
-    background-color: #333 !important;
-    color: white !important;
 }

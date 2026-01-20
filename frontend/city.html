@@ -3,50 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">City - The Weather Archive</title>
+    <title id="pageTitle">City Details - The Weather Archive</title>
     <link rel="stylesheet" href="css/city-styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <header class="header">
-        <div class="header-content">
-            <a href="index.html" class="back-link">← Back to Home</a>
-            <h1 class="site-title">The Weather Archive</h1>
-        </div>
-    </header>
+<header class="header">
+    <div class="header-content">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        <h1 class="site-title">The Weather Archive</h1>
+    </div>
+</header>
 
-    <main class="main-content">
-        <div class="container">
-            <h2 id="cityHeading" class="city-heading">Loading...</h2>
-
-            <div class="weather-card">
-                <div class="weather-stat">
-                    <span class="stat-label">Average Temperature</span>
-                    <span id="avg-temp" class="stat-value">--</span>
-                </div>
-                <div class="weather-stat">
-                    <span class="stat-label">Average Humidity</span>
-                    <span id="avg-humidity" class="stat-value">--</span>
-                </div>
-                <p id="last-update" class="update-text"></p>
+<main class="main-content">
+    <div class="container">
+        <h2 id="cityHeading" class="city-heading">Loading...</h2>
+        
+        <div id="error-msg"
+             style="display: none; padding: 30px; border: 2px dashed #f00; border-radius: 8px; color: #f00; text-align: center; font-weight: bold; margin-bottom: 20px;">
             </div>
 
-            <div class="controls-section">
-                <div class="date-picker-container">
-                    <label for="datePicker" class="control-label">Select Date:</label>
-                    <input type="date" id="datePicker" class="date-picker">
-                </div>
+        <div class="weather-card">
+            <div class="weather-stat">
+                <span class="stat-label">Average Temperature</span>
+                <span id="avg-temp" class="stat-value">--</span>
+            </div>
+            <div class="weather-stat">
+                <span class="stat-label">Average Humidity</span>
+                <span id="avg-humidity" class="stat-value">--</span>
+            </div>
+            <div class="weather-stat">
+                <span class="stat-label">Average Pressure</span>
+                <span id="avg-pressure" class="stat-value">--</span>
+            </div>
+            <p id="last-update" class="update-text"></p>
+        </div>
 
-                <div class="time-slider-container">
-                    <label for="timeSlider" class="control-label">Select Hour:</label>
-                    <div class="slider-wrapper">
-                        <input type="range" id="timeSlider" class="time-slider" min="0" max="23" value="12">
-                        <div class="slider-value" id="sliderValue">12:00</div>
-                    </div>
+        <div class="chart-section" style="background: white; padding: 20px; border-radius: 12px; margin: 30px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="margin-bottom: 15px; text-align: center; color: #333;">Hourly Temperature Trend</h3>
+            <div style="height: 300px; position: relative;">
+                <canvas id="weatherChart"></canvas>
+            </div>
+        </div>
+
+        <div class="controls-section">
+            <div class="date-picker-container">
+                <label for="datePicker" class="control-label">Select Date:</label>
+                <input type="date" id="datePicker" class="date-picker">
+            </div>
+
+            <div class="time-slider-container">
+                <label for="timeSlider" class="control-label">Select Hour:</label>
+                <div class="slider-wrapper">
+                    <input type="range" id="timeSlider" class="time-slider" min="0" max="23" value="12">
+                    <div class="slider-value" id="sliderValue">12:00</div>
                 </div>
             </div>
         </div>
-    </main>
 
-    <script src="js/city-script.js"></script>
+        <div class="visuals-container" style="margin-top: 30px; display: flex; flex-direction: column; gap: 30px; align-items: center;">
+    
+            <div class="photo-section" style="width: 100%; text-align: center;">
+                <h3 style="margin-bottom: 15px;">Captured View</h3>
+                <div id="no-photo-msg" style="padding: 40px; border: 2px dashed #ccc; border-radius: 8px; color: #777;">
+                    No snapshot available for this hour.
+                </div>
+                <img id="photo" class="weather-photo" src="" alt="City photo" 
+                     style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: none; margin: 0 auto;">
+            </div>
+
+            <div class="video-section" style="width: 100%; text-align: center;">
+                <h3 style="margin-bottom: 15px;">Daily Timelapse</h3>
+                <div id="no-video-msg" style="padding: 40px; border: 2px dashed #ccc; border-radius: 8px; color: #777; display: none;">
+                    No timelapse available for this date.
+                </div>
+                <video id="weather-video" controls muted playsinline 
+                    style="width: 100%; max-width: 600px; border-radius: 8px; background: #000; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: none;">
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="js/city-script.js"></script>
 </body>
 </html>
